@@ -24,13 +24,13 @@ public class AppointmentServiceController {
 	@Autowired
 	private IAppointmentService appointmentService;
 
-	 @PostMapping("/{doctorId}/{patientId}")
+	 @PostMapping("/create-appointment/{doctorId}/{patientId}")
 	public ResponseEntity<String> createAppointment( @PathVariable Long doctorId,@PathVariable Long patientId,@RequestBody AppointmentDTO appointment) throws Exception{
 		String resultMsg = appointmentService.createAppointment(doctorId, patientId,appointment);
 		return new ResponseEntity<>(resultMsg,HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/update-doctor")
+	@PutMapping("/update-appointment")
 	public ResponseEntity<String> updateAppointment(@PathVariable Long appointmentId,@RequestBody AppointmentDTO appointment)throws EntityNotFoundException{
 		String resultMsg = appointmentService.updateAppointment(appointmentId,appointment);
 		return new ResponseEntity<>(resultMsg,HttpStatus.OK);
