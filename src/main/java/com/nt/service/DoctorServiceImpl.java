@@ -65,7 +65,7 @@ public class DoctorServiceImpl implements IDoctorService {
 		 // If the doctor exists, update it, otherwise return a "not found" message
 		if(doctorData.isPresent()) {
 			 	// Fetch the clinic by clinicId from the input DTO, throw exception if not found
-				Clinic existingClinic = clinicRepo.findById(input.getClinicId()).orElseThrow(()->new  EntityNotFoundException("Clinic not found.."));
+				Clinic existingClinic = clinicRepo.findById(input.getClinicId()).orElseThrow(()->new  EntityNotFoundException("Doctor not found.."));
 				
 				// Update the doctor's details and associate with the existing clinic
 				Doctor doctor = new Doctor();
@@ -85,7 +85,7 @@ public class DoctorServiceImpl implements IDoctorService {
 	@Override
 	public DoctorClinicDTO getDoctorById(Long doctorId) throws EntityNotFoundException{
 		// Fetch the doctor by doctorId, throw exception if not found
-		Doctor optional = doctorRepo.findById(doctorId).orElseThrow(()->new EntityNotFoundException("Clinic not found.."));
+		Doctor optional = doctorRepo.findById(doctorId).orElseThrow(()->new EntityNotFoundException("Doctor not found.."));
 		
 		// Create a new DTO and copy properties from the doctor entity
 		DoctorClinicDTO doctorDto = new DoctorClinicDTO();

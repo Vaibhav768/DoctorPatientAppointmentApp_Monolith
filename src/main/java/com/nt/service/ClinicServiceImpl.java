@@ -64,7 +64,7 @@ public class ClinicServiceImpl implements IClinicService {
 		ClinicDTO patientDetails = new ClinicDTO();
 		
 		// Fetch clinic by ID, throw exception if not found
-		Clinic clinic = clinicRepo.findById(clinicId).orElseThrow(()->new EntityNotFoundException("Patient not found.."));
+		Clinic clinic = clinicRepo.findById(clinicId).orElseThrow(()->new EntityNotFoundException("Clinic not found.."));
 		
 		// Copy clinic data to DTO and return
 		BeanUtils.copyProperties(clinic, patientDetails);
